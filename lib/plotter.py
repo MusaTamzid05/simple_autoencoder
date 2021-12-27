@@ -10,7 +10,7 @@ def plot_original_vs_generated(original, generated):
 
         return np.vstack(
                 [
-                    np.hstack(images[5]),
+                    np.hstack(images[:5]),
                     np.hstack(images[5:10]),
                     np.hstack(images[10:15]),
 
@@ -45,7 +45,7 @@ def plot_original_vs_generated(original, generated):
     mosaic = cv2.resize(mosaic, (860, 860),
             interpolation = cv2.INTER_AREA)
 
-    mosaic = cv2.cvtColor(mosaic, cv2.COLOR2BGR)
+    mosaic = cv2.cvtColor(mosaic, cv2.COLOR_GRAY2BGR)
 
     add_text(mosaic, "Original", (50 , 100))
     add_text(mosaic, "Generated", (50 , 520))

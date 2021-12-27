@@ -26,10 +26,10 @@ class SimpleAutoencoder(Autoencoder):
         print(f"Y shape :{y.shape}")
 
         if self.model is None:
-            model = init_simple_autoencoder(input_shape = x.shape[1], encoding_dim = 128)
-            model.summary()
+            self.model = init_simple_autoencoder(input_shape = x.shape[1], encoding_dim = 128)
+            self.model.summary()
 
-        model.fit(
+        self.model.fit(
                 x,
                 x,
                 epochs = epochs,
@@ -37,6 +37,13 @@ class SimpleAutoencoder(Autoencoder):
                 shuffle = True,
                 validation_data = (y, y)
                 )
+
+    def predict(self, test_data):
+        return self.model.predict(test_data)
+
+
+
+
 
 
     def save(self, model_dir_path):
