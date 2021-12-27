@@ -1,14 +1,42 @@
-
+from lib.models import init_simple_autoencoder
 
 class Autoencoder:
     def __init__(self):
-        raise RuntimeError("Need to be implemented")
+        self.model = None
 
     def load(self, model_dir_path):
         raise RuntimeError("Need to be implemented")
 
-    def fit(self, x, y, epochs = 100, batch_size = 32):
+    def fit(self, x, y, epochs = 10, batch_size = 1024):
         raise RuntimeError("Need to be implemented")
+
+
+    def save(self, model_dir_path):
+        raise RuntimeError("Need to be implemented")
+
+
+class SimpleAutoencoder(Autoencoder):
+    def __init__(self):
+        super().__init__()
+
+    def load(self, model_dir_path):
+        raise RuntimeError("Need to be implemented")
+
+    def fit(self, x, y, epochs = 10, batch_size = 1024):
+        print(f"Y shape :{y.shape}")
+
+        if self.model is None:
+            model = init_simple_autoencoder(input_shape = x.shape[1], encoding_dim = 128)
+            model.summary()
+
+        model.fit(
+                x,
+                x,
+                epochs = epochs,
+                batch_size = batch_size,
+                shuffle = True,
+                validation_data = (y, y)
+                )
 
 
     def save(self, model_dir_path):

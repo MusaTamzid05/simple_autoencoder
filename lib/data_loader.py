@@ -2,7 +2,7 @@ from tensorflow.keras.datasets import fashion_mnist
 
 class DataLoader:
     def __init__(self):
-        raise RuntimeError("Need to be implemented")
+        pass
 
     def process(self, x_data):
         raise RuntimeError("Need to be implemented")
@@ -15,6 +15,7 @@ class DataLoader:
 
 class FashionMNISTLoader(DataLoader):
     def __init__(self):
+        super().__init__()
         (self.x_train, _), (self.x_test, _) = fashion_mnist.load_data()
 
 

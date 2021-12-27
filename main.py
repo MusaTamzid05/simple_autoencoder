@@ -1,4 +1,5 @@
 from lib.data_loader import FashionMNISTLoader
+from lib.autoencoder import SimpleAutoencoder
 
 
 def main():
@@ -7,6 +8,9 @@ def main():
 
     print(x_train.shape)
     print(x_test.shape)
+
+    autoencoder = SimpleAutoencoder()
+    autoencoder.fit(x = x_train, y = x_test)
 
 if __name__ == "__main__":
     main()
